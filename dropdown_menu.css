@@ -1,0 +1,61 @@
+html, body {
+  padding: 0;
+  margin: 0;
+  font-family: "Lucida Grande","Lucida Sans Unicode","Lucida Sans","Geneva",Verdana,sans-serif;
+  font-size: 14px;
+}
+
+div {
+  padding-top: 100px;
+}
+
+ul {
+  list-style:none;
+  margin:0;
+  padding-left: 200px;
+}
+
+ul.menu li {
+  display: block;
+  position:relative;
+  width: 200px;
+  height: 70px;
+  background-color: pink;
+}
+
+ul.sub li {
+  width: 200px;
+  height: 70px;
+  background-color: #feaef7;
+}
+
+ul.subsub li {
+  width: 200px;
+  height: 70px;
+  background-color: #aefebf;
+}
+
+li {
+    border-bottom:solid 1px black;
+}
+
+li:last-child {
+    border-bottom:none;
+}
+
+li {
+  text-align: center;
+  vertical-align: middle;
+  line-height: 75px;
+}
+
+/* sub navigation */
+li ul {
+    position:absolute;
+    top: 0px; /* make this equal to the line-height of the links (specified below) */
+    width: 200px;
+}
+
+ul.sub-menu {
+    display:none;
+}
