@@ -49,10 +49,9 @@ li {
   line-height: 75px;
 }
 
-/* sub navigation */
 li ul {
     position:absolute;
-    top: 0px; /* make this equal to the line-height of the links (specified below) */
+    top: 0px;
     width: 200px;
 }
 

@@ -39,11 +39,31 @@ var MENU = [
   }
 ];
 
-$( document ).ready(function() {
+function menuClasses(data) {
+  return className = data.substr(0, data.indexOf(' ')).toLowerCase();
+}
 
+function buildList(data, menu){
+  var html = '<ul class="' + menu + '">';
+  for(item in data){
+    if(data[item].submenu != null){
+      html += '<li class="dropdown" id="' + data[item].title + '">';
+      html += data[item].title;
+      menu = 'sub-menu ' + menuClasses(data[item].submenu[0].title)
+      html += buildList(data[item].submenu, menu);
+    } else {
+      html += '<li id="' + data[item].title + '">';
+      html += data[item].title
+    }
+    html += '</li>';
+  }
+  html += '</ul>';
+  return html;
+}
 
+$(document).ready(function() {
 
-// SIMPLE HARDCODED HTML
+  $('body').append($.parseHTML((buildList(MENU, "menu"))));
 
   $('.dropdown').hover( function(){
     $(this).children('.sub-menu').show();
@@ -51,7 +71,7 @@ $( document ).ready(function() {
     $(this).children('.sub-menu').hide();
   });
 
-  $("li").click(function(event) {
+  $('li').click(function(event) {
     event.stopPropagation()
     alert($(this).attr('id'));
   });
