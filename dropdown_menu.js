@@ -43,14 +43,14 @@ function menuClasses(data) {
   return className = data.substr(0, data.indexOf(' ')).toLowerCase();
 }
 
-function buildList(data, menu){
+function buildMenu(data, menu){
   var html = '<ul class="' + menu + '">';
   for(item in data){
     if(data[item].submenu != null){
       html += '<li class="dropdown" id="' + data[item].title + '">';
       html += data[item].title;
       menu = 'sub-menu ' + menuClasses(data[item].submenu[0].title)
-      html += buildList(data[item].submenu, menu);
+      html += buildMenu(data[item].submenu, menu);
     } else {
       html += '<li id="' + data[item].title + '">';
       html += data[item].title
@@ -63,7 +63,7 @@ function buildList(data, menu){
 
 $(document).ready(function() {
 
-  $('body').append($.parseHTML((buildList(MENU, "menu"))));
+  $('body').append($.parseHTML((buildMenu(MENU, "menu"))));
 
   $('.dropdown').hover( function(){
     $(this).children('.sub-menu').show();
